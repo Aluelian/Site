@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Loja de Roupas</title>
+</head>
+<body>
+    <header>
+        <button id="toggleCategorias" class="menu-btn" aria-label="Abrir menu de categorias">
+            <img src="data:image/svg+xml;utf8,<svg width='32' height='32' xmlns='http://www.w3.org/2000/svg'><rect x='4' y='6' width='24' height='5' rx='2.5' fill='black'/><rect x='4' y='14' width='24' height='5' rx='2.5' fill='black'/><rect x='4' y='22' width='24' height='5' rx='2.5' fill='black'/></svg>" alt="Menu" />
+        </button>
+        <h1>Loja de Roupas</h1>
+        <button class="cart-btn" id="openCart">
+            🛒<span class="cart-count" id="cartCount">0</span>
+        </button>
+    </header>
+    <div class="container">
+        <aside id="asideCategorias" class="aside-escondido">
+            <button id="closeCategorias" class="close-categorias" aria-label="Fechar categorias">
+                <img src="data:image/svg+xml;utf8,<svg width='28' height='28' xmlns='http://www.w3.org/2000/svg'><line x1='8' y1='8' x2='20' y2='20' stroke='black' stroke-width='3' stroke-linecap='round'/><line x1='20' y1='8' x2='8' y2='20' stroke='black' stroke-width='3' stroke-linecap='round'/></svg>" alt="Fechar" />
+            </button>
+            <h2 style="margin-bottom: 1rem;">Categorias</h2>
+            <ul id="listaCategorias">
+                <li>Masculino</li>
+                <li>Feminino</li>
+                <li>Infantil</li>
+                <li>Acessórios</li>
+                <li>Calçados</li>
+            </ul> 
+        </aside>
+        <main>
+            <div class="produto">
+                <div class="produto-img-box">
+                    <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80" alt="Camiseta Masculina" class="main-img">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" alt="Camiseta Masculina Hover" class="hover-img">
+                </div>
+                <h3>Camiseta Masculina</h3>
+                <p>R$ 49,90</p>
+                <button onclick="addToCart('Camiseta Masculina', 49.90)">Comprar</button>
+            </div>
+            <div class="produto">
+                <div class="produto-img-box">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" alt="Vestido Feminino" class="main-img">
+                    <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80" alt="Vestido Feminino Hover" class="hover-img">
+                </div>
+                <h3>Vestido Feminino</h3>
+                <p>R$ 89,90</p>
+                <button onclick="addToCart('Vestido Feminino', 89.90)">Comprar</button>
+            </div>
+            <div class="produto">
+                <div class="produto-img-box">
+                    <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=400&q=80" alt="Calça Jeans Infantil" class="main-img">
+                    <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Calça Jeans Infantil Hover" class="hover-img">
+                </div>
+                <h3>Calça Jeans Infantil</h3>
+                <p>R$ 59,90</p>
+                <button onclick="addToCart('Calça Jeans Infantil', 59.90)">Comprar</button>
+            </div>
+            <div class="produto">
+                <div class="produto-img-box">
+                    <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Boné Acessório" class="main-img">
+                    <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80" alt="Boné Acessório Hover" class="hover-img">
+                </div>
+                <h3>Boné Acessório</h3>
+                <p>R$ 29,90</p>
+                <button onclick="addToCart('Boné Acessório', 29.90)">Comprar</button>
+            </div>
+            <div class="produto">
+                <div class="produto-img-box">
+                    <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80" alt="Tênis Casual" class="main-img">
+                    <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=400&q=80" alt="Tênis Casual Hover" class="hover-img">
+                </div>
+                <h3>Tênis Casual</h3>
+                <p>R$ 119,90</p>
+                <button onclick="addToCart('Tênis Casual', 119.90)">Comprar</button>
+            </div>
+        </main>
+    </div>
+    <div class="cart-modal" id="cartModal">
+        <button class="close-cart" id="closeCart">&times;</button>
+        <h2>Seu Carrinho</h2>
+        <div id="cartItems"></div>
+        <div class="cart-total" id="cartTotal">Total: R$ 0,00</div>
+        <button class="btn-finalizar-compra" onclick="window.location.href='compra.html'">Comprar</button>
+    </div>
+    <div id="cart-toast" class="cart-toast"></div>
+    <script src="script.js"></script>
+</body>
+</html>
